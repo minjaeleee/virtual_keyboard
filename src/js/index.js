@@ -1,3 +1,5 @@
-import '../css/style.css';
+import "../css/style.css";
 
-console.log("hi")
+const a = 1;
+const b = 2;
+console.log(a + b);
