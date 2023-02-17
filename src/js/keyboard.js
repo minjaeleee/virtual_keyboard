@@ -14,8 +14,8 @@ export class Keyboard {
   }
 
   addEvent() {
-    this.switchEl = document.addEventListener('change', this.onChangeTheme)
-    this.fontSelectEl = document.addEventListener('change', this.onChangeFont)
+    this.switchEl.addEventListener('change', this.onChangeTheme)
+    this.fontSelectEl.addEventListener('change', this.onChangeFont)
     document.addEventListener('keydown', this.onKeyDown.bind(this))
     document.addEventListener('keyup', this.onKeyUp.bind(this))
     this.inputEl.addEventListener('input', this.onInput)
