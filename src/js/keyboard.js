@@ -19,6 +19,29 @@ export class Keyboard {
     document.addEventListener('keydown', this.onKeyDown.bind(this))
     document.addEventListener('keyup', this.onKeyUp.bind(this))
     this.inputEl.addEventListener('input', this.onInput)
+    this.keyboardEl.addEventListener('mousedown', this.onMouseDown)
+    document.addEventListener('mouseup', this.onMouseUp.bind(this))
+  }
+
+  onMouseUp(event) {
+    const keyEl = event.target.closest('div.key')
+    const isActive = keyEl?.classList.contains('active')
+    // data-val는 dataset.val로 표현
+    const val = keyEl?.dataset.val
+    if (isActive && val && val !== 'Space' && val !== 'Backspace') {
+      this.inputEl.value += val
+    }
+    if (isActive && val === "Space") {
+      this.inputEl.value += " "
+    }
+    if (isActive && val === "Backspace") {
+      this.inputEl.value = this.inputEl.value.slice(0, -1)
+    }
+    event.target.closest('.active')?.classList.remove('active')
+  }
+
+  onMouseDown(event) {
+    event.target.closest('div.key')?.classList.add('active')
   }
 
   onInput(event) {
@@ -50,6 +73,5 @@ export class Keyboard {
 
   onChangeFont(event) {
     document.body.style.fontFamily = event.target.value
-
   }
 }
