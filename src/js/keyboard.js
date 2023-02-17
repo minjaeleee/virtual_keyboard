@@ -67,7 +67,7 @@ export class Keyboard {
   onChangeTheme(event) {
     document.documentElement.setAttribute(
       'theme',
-      event.target.checked ? 'dark-mode' : 'white-mode'
+      event.target.checked ? 'white-mode' : 'dark-mode'
     )
   }
 
